@@ -110,67 +110,79 @@ function get_chapter_page_amount(targetUrl) {
     return Math.max(...numbers);
 }
 
-function get_directory_amount(targetUrl) {
-    return new Promise((resolve, reject) => {
-        // 发送HTTP请求获取HTML内容
-        fetch(targetUrl)
-            .then(response => {
-                // 将响应转换为Blob对象
-                return response.blob();
-            })
-            .then(blob => {
-                // 创建一个新的FileReader对象
-                var reader = new FileReader();
-                reader.onload = function () {
-                    // 将Blob解码为文本，使用GBK编码
-                    var text = new TextDecoder('gbk').decode(reader.result);
-
-                    // 创建一个虚拟的HTML元素，用于解析HTML字符串
-                    var tempElement = document.createElement('div');
-                    tempElement.innerHTML = text;
-
-                    // 查找包含<div class="page">的元素
-                    var pageDivs = tempElement.querySelectorAll('div.page');
-
-                    var layer;
-
-                    // 打印在控制台中
-                    pageDivs.forEach(div => {
-                        layer = div.innerHTML;
-                    });
-
-                    // 使用正则表达式提取页数信息
-                    var regex = /第\d+\/(\d+)页/;
-                    var match = layer.match(regex);
-
-                    if (match) {
-                        var total_Pages_directory = parseInt(match[1]);
-                        console.log(typeof total_Pages_directory)
-                        console.log("总页数为：" + total_Pages_directory);
-                        resolve(total_Pages_directory);
-                    } else {
-                        console.log("未找到页数信息。");
-                        reject("未找到页数信息。");
-                    }
-                };
-                reader.readAsArrayBuffer(blob);
-            })
-            .catch(error => {
-                console.error('发生错误：', error);
-                reject(error);
-            });
-    });
-}
-
-get_directory_amount('https://66yydstxt426.com/36/36991/')
-    .then(result => {
-        console.log(result); // 输出结果
-    })
-    .catch(error => {
-        console.error(error); // 输出错误
-    });
 
 
+
+
+
+
+
+
+
+
+// function get_directory_amount(targetUrl) {
+//     return new Promise((resolve, reject) => {
+//         // 发送HTTP请求获取HTML内容
+//         fetch(targetUrl)
+//             .then(response => {
+//                 // 将响应转换为Blob对象
+//                 return response.blob();
+//             })
+//             .then(blob => {
+//                 // 创建一个新的FileReader对象
+//                 var reader = new FileReader();
+//                 reader.onload = function () {
+//                     // 将Blob解码为文本，使用GBK编码
+//                     var text = new TextDecoder('gbk').decode(reader.result);
+//
+//                     // 创建一个虚拟的HTML元素，用于解析HTML字符串
+//                     var tempElement = document.createElement('div');
+//                     tempElement.innerHTML = text;
+//
+//                     // 查找包含<div class="page">的元素
+//                     var pageDivs = tempElement.querySelectorAll('div.page');
+//
+//                     var layer;
+//
+//                     // 打印在控制台中
+//                     pageDivs.forEach(div => {
+//                         layer = div.innerHTML;
+//                     });
+//
+//                     // 使用正则表达式提取页数信息
+//                     var regex = /第\d+\/(\d+)页/;
+//                     var match = layer.match(regex);
+//
+//                     if (match) {
+//                         var total_Pages_directory = parseInt(match[1]);
+//                         console.log(typeof total_Pages_directory)
+//                         console.log("总页数为：" + total_Pages_directory);
+//                         resolve(total_Pages_directory);
+//                     } else {
+//                         console.log("未找到页数信息。");
+//                         reject("未找到页数信息。");
+//                     }
+//                 };
+//                 reader.readAsArrayBuffer(blob);
+//             })
+//             .catch(error => {
+//                 console.error('发生错误：', error);
+//                 reject(error);
+//             });
+//     });
+// }
+//
+// var directory_amount = 0;
+//
+// get_directory_amount('https://66yydstxt426.com/36/36991/')
+//     .then(result => {
+//         directory_amount = result;
+//     })
+//     .catch(error => {
+//         console.error(error); // 输出错误
+//     });
+//
+// console.log(directory_amount)
 
 
 
