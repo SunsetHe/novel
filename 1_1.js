@@ -36,9 +36,9 @@ async function fetchChapterUrls(directoryUrls) {
 
 // 查看目录页数，并更改对应数目
 var DirectoryAmount = 3;
-
 // 书的网址，记得删掉/
-var BookUrl = 'https://66yydstxt426.com/36/36991'
+var BookUrl = 'https://66yydstxt426.com/36/36991';
+var BookUid = '36991';
 
 // 生成目录的 URL 列表
 var DirectoryUrls = [];
@@ -69,7 +69,8 @@ fetchChapterUrls(DirectoryUrls)
         // 将章节 URL 写入文件并下载
         const content = chapterUrls.join('\n');
         const blob = createBlob(content);
-        const filename = 'chapter_urls.txt';
+
+        const filename = BookUid + '.txt';
         downloadFile(blob, filename);
 
     })

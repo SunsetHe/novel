@@ -1,7 +1,7 @@
 import re
 
 # 读取txt文件中的URL并存储到列表中
-with open('chapter_urls.txt', 'r') as file:
+with open('36991.txt', 'r') as file:
     urls = file.readlines()
 
 # 定义一个函数，用于提取URL中.html前面的数字作为排序的关键字
