@@ -1,6 +1,14 @@
-1. 抓取所有章节的html的合集的txt，下载到本地，上传到GitHub
-2. 抓取每个章节的页数，下载到本地合并到txt中，再上传到GitHub
-3. 下载每个页的文件到本地
-4. 将每个页的html中的图片插入改为对应文字
-5. 将每个页的html导出为对应文字
-6. 将所有文字结合为一体的txt文件
+1. 使用all.js，抓取部分zip到本地，复制控制台输出到本地改为txt
+2. 把txt删到只有url的，运行1.py，格式化这个txt
+3. 运行2.py，查看缺多少页，输出一个LackUrl.txt，同时自动更改download.js
+4. 运行download.js，再次下载，再运行2.py，直至不差页
+5.
+6.
+
+重要的变量
+BookUrl 书的网址
+DirectoryAmount 目录页数
+DirectoryUrls 目录的url列表
+chapterUrls 章节的url列表
+chapterPage 章节的页数
+pageUrl 页的网址
