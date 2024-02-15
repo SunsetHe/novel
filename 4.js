@@ -31,7 +31,7 @@ var intervalId = setInterval(function() {
     }
 }, 20000);
 
-// 此代码获取html以及
+// 此代码获取html以及所有的png
 // var script = document.createElement('script');
 // script.src = 'https://cdn.jsdelivr.net/npm/jszip@3.1.5/dist/jszip.min.js';
 // document.head.appendChild(script);
